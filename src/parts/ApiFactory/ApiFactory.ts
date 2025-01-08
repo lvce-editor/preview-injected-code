@@ -1,9 +1,7 @@
 import * as Callback from '../Callback/Callback.ts'
+import * as Command from '../Command/Command.ts'
 
-let commandMap: any = {}
 let port: any = undefined
-
-const callbacks = Object.create(null)
 
 const isJsonRpcResponse = (message: any) => {
   return 'result' in message || 'error' in message
@@ -12,17 +10,11 @@ const isJsonRpcResponse = (message: any) => {
 const handleMessage = async (event: any) => {
   const message = event.data
   if (isJsonRpcResponse(message)) {
-    const fn = callbacks[message.id]
-    delete callbacks[message.id]
-    fn(message.result)
+    Callback.resolve(message.id, message)
     return
   }
   const { method, params } = message
-  const fn = commandMap[method]
-  if (!fn) {
-    throw new Error(`command not found ${method}`)
-  }
-  const result = await fn(...params)
+  const result = await Command.execute(method, ...params)
   if (message.id) {
     event.target.postMessage({
       jsonrpc: '2.0',
@@ -66,8 +58,8 @@ const handleWindowMessage = (event: any) => {
 
 window.addEventListener('message', handleWindowMessage)
 
-export const apiFactory = (value: any) => {
-  commandMap = value
+export const apiFactory = (commandMap: any) => {
+  Command.register(commandMap)
   return {
     async invoke(method: string, ...params: any[]) {
       const { id, promise } = Callback.registerPromise()
