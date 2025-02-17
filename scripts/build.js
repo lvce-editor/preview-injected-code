@@ -71,7 +71,7 @@ delete packageJson.devDependencies
 delete packageJson.prettier
 delete packageJson.jest
 packageJson.version = version
-packageJson.main = 'dist/index.js'
+packageJson.main = 'dist/previewInjectedCodeMain.js'
 
 await writeJson(join(dist, 'package.json'), packageJson)
 
