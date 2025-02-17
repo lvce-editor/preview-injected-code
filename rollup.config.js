@@ -1,4 +1,5 @@
 import { babel } from '@rollup/plugin-babel'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import pluginTypeScript from '@babel/preset-typescript'
 
 export default {
@@ -17,5 +18,6 @@ export default {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       presets: [pluginTypeScript],
     }),
+    nodeResolve(),
   ],
 }
