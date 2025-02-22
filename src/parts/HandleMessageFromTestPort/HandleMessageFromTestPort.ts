@@ -1,4 +1,4 @@
-export const handleMessageFromTestPort = (event: any) => {
+export const handleMessageFromTestPort = (event: any): void => {
   // TODO invoke test function and send back result
   const { data, target } = event
   const { method, params, id } = data
