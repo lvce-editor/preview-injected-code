@@ -1,5 +1,5 @@
 let id = 0
 
-export const createId = () => {
+export const createId = (): number => {
   return ++id
 }
