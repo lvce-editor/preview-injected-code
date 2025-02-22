@@ -1,5 +1,5 @@
-import * as QuerySelectorWithOptions from '../QuerySelectorWithOptions/QuerySelectorWithOptions.ts'
 import * as QuerySelector from '../QuerySelector/QuerySelector.ts'
+import * as QuerySelectorWithOptions from '../QuerySelectorWithOptions/QuerySelectorWithOptions.ts'
 
 // TODO move all of these to test worker
 
@@ -74,7 +74,7 @@ const stringifyElement = (element: any): string => {
 
 export const toBeFocused = (locator: any): string => {
   const locatorString = printLocator(locator)
-  const activeElement = document.activeElement
+  const {activeElement} = document
   const stringifiedActiveElement = stringifyElement(activeElement)
   return `expected ${locatorString} to be focused but active element is ${stringifiedActiveElement}`
 }
