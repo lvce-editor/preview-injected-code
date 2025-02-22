@@ -1,8 +1,7 @@
-const createObjectUrl = (blob: Blob): string => {
-  const url = URL.createObjectURL(blob)
-  return url
-}
+import * as CreateObjectUrl from '../CreateObjectUrl/CreateObjectUrl.ts'
+import * as PerformAction from '../PerformAction/PerformAction.ts'
 
 export const testCommandMap = {
-  createObjectUrl,
+  createObjectUrl: CreateObjectUrl.createObjectUrl,
+  'TestFrameWork.performAction': PerformAction.performAction,
 }
