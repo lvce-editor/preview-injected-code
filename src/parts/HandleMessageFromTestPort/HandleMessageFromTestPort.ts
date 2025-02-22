@@ -1,16 +1,16 @@
-export const handleMessageFromTestPort = (event: any): void => {
-  // TODO invoke test function and send back result
+import * as TestCommandMap from '../TestCommandMap/TestCommandMap.ts'
+
+export const handleMessageFromTestPort = async (event: any): Promise<void> => {
   const { data, target } = event
   const { method, params, id } = data
-  if (method === 'createObjectUrl') {
-    const blob = params[0]
-    const url = URL.createObjectURL(blob)
-    target.postMessage({
-      jsonrpc: '2.0',
-      id,
-      result: url,
-    })
-  } else {
+  const fn = TestCommandMap.testCommandMap[method]
+  if (!fn) {
     throw new Error('unsupported method')
   }
+  const result = await fn(...params)
+  target.postMessage({
+    jsonrpc: '2.0',
+    id,
+    result,
+  })
 }
