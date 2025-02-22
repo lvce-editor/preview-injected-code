@@ -1,6 +1,5 @@
 export const querySelectorByText = (
-  // @ts-ignore
-  root: HTMLElement,
+  root: Element,
   text: string,
 ): readonly HTMLElement[] => {
   let node: Node | null
