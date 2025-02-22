@@ -2,7 +2,7 @@ import { querySelector } from '../QuerySelector/QuerySelector.ts'
 
 export const querySelectorWithOptions = (
   selector: any,
-  // eslint-disable-next-line  @typescript-eslint/prefer-readonly-parameter-types
+   
   { nth = -1, hasText = '' } = {},
 ): any => {
   let elements = querySelector(selector)
