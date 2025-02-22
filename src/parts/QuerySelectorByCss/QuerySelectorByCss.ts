@@ -1,5 +1,3 @@
-export const querySelectorByCss = (
-  selector: string,
-): readonly HTMLElement[] => {
-  return Array.from(document.querySelectorAll(selector))
+export const querySelectorByCss = (selector: string): readonly Element[] => {
+  return [...document.querySelectorAll(selector)]
 }
