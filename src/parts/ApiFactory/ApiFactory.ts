@@ -6,7 +6,7 @@ import * as PortState from '../PortState/PortState.ts'
 export const apiFactory = (commandMap: any): Api => {
   Command.register(commandMap)
   return {
-    async invoke(method: string, ...params: any[]) {
+    async invoke(method: string, ...params: readonly any[]): Promise<any> {
       const { id, promise } = Callback.registerPromise()
       const port = PortState.get()
       port.postMessage({
