@@ -13,6 +13,7 @@ export const querySelector = (selector: string): readonly any[] => {
     const index = selector.indexOf('text=')
     const elements = querySelectorByCss(selector.slice(0, index))
     const text = selector.slice(index + 'text='.length)
+    // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
     return elements.flatMap((element) => {
       return querySelectorByText(element, text)
     })

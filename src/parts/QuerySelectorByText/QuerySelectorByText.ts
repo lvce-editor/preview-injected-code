@@ -1,4 +1,5 @@
 export const querySelectorByText = (
+  // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
   root: Element,
   text: string,
 ): readonly HTMLElement[] => {
