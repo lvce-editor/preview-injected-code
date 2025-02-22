@@ -2,7 +2,7 @@ import { createId } from '../Id/Id.ts'
 
 const callbacks = Object.create(null)
 
-export const registerPromise = () => {
+export const registerPromise = (): any => {
   const id = createId()
   const { resolve, promise } = Promise.withResolvers()
   callbacks[id] = resolve
