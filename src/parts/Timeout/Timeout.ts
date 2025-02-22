@@ -14,7 +14,7 @@ export const waitForMutation = async (maxDelay: number): Promise<void> => {
     clearTimeout(timeout)
   })
 
-  const callback = (mutations) => {
+  const callback = (mutations): void => {
     resolve2(undefined)
   }
   const observer = new MutationObserver(callback)
