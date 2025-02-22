@@ -3,11 +3,11 @@ import * as Command from '../Command/Command.ts'
 import * as HandleMessageFromTestPort from '../HandleMessageFromTestPort/HandleMessageFromTestPort.ts'
 import * as PortState from '../PortState/PortState.ts'
 
-const isJsonRpcResponse = (message: any) => {
+const isJsonRpcResponse = (message: any): boolean => {
   return 'result' in message || 'error' in message
 }
 
-const handleMessage = async (event: any) => {
+const handleMessage = async (event: any): Promise<void> => {
   const message = event.data
   if (isJsonRpcResponse(message)) {
     Callback.resolve(message.id, message)
@@ -24,7 +24,7 @@ const handleMessage = async (event: any) => {
   }
 }
 
-export const handleWindowMessage = (event: any) => {
+export const handleWindowMessage = (event: any): void => {
   const { data } = event
   const message = data
   const innerPort = message.params[0]
