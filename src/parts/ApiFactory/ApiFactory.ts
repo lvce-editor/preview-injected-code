@@ -1,8 +1,9 @@
+import type { Api } from '../Api/Api.ts'
 import * as Callback from '../Callback/Callback.ts'
 import * as Command from '../Command/Command.ts'
 import * as PortState from '../PortState/PortState.ts'
 
-export const apiFactory = (commandMap: any) => {
+export const apiFactory = (commandMap: any): Api => {
   Command.register(commandMap)
   return {
     async invoke(method: string, ...params: any[]) {
