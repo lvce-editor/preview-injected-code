@@ -1,13 +1,10 @@
 import * as QuerySelectorWithOptions from '../QuerySelectorWithOptions/QuerySelectorWithOptions.ts'
 
-export const toHaveText = (locator) => {
-  const element = QuerySelectorWithOptions.querySelectorWithOptions(
-    locator._selector,
-    {
-      nth: locator._nth,
-      hasText: locator._hasText,
-    },
-  )
+export const toHaveText = (locator): any => {
+  const element = QuerySelectorWithOptions.querySelectorWithOptions(locator._selector, {
+    nth: locator._nth,
+    hasText: locator._hasText,
+  })
   if (!element) {
     return {
       wasFound: false,
@@ -20,14 +17,11 @@ export const toHaveText = (locator) => {
   }
 }
 
-export const toHaveAttribute = (locator, { key, value }) => {
-  const element = QuerySelectorWithOptions.querySelectorWithOptions(
-    locator._selector,
-    {
-      nth: locator._nth,
-      hasText: locator._hasText,
-    },
-  )
+export const toHaveAttribute = (locator, { key, value }): any => {
+  const element = QuerySelectorWithOptions.querySelectorWithOptions(locator._selector, {
+    nth: locator._nth,
+    hasText: locator._hasText,
+  })
   if (!element) {
     return {
       wasFound: false,
@@ -41,7 +35,7 @@ export const toHaveAttribute = (locator, { key, value }) => {
   }
 }
 
-export const toHaveCount = (locator, { count }) => {
+export const toHaveCount = (locator, { count }): any => {
   const elements = QuerySelectorWithOptions.querySelector(locator._selector)
   const actualCount = elements.length
   return {
@@ -49,7 +43,7 @@ export const toHaveCount = (locator, { count }) => {
   }
 }
 
-const stringifyElement = (element) => {
+const stringifyElement = (element): any => {
   if (element.id) {
     return `#${element.id}`
   }
@@ -62,15 +56,15 @@ const stringifyElement = (element) => {
   return element.tagName
 }
 
-export const toBeFocused = (locator) => {
-  const {activeElement} = document
+export const toBeFocused = (locator): any => {
+  const { activeElement } = document
   const stringifiedActiveElement = stringifyElement(activeElement)
   return {
     actual: stringifiedActiveElement,
   }
 }
 
-export const toHaveClass = (locator, { className }) => {
+export const toHaveClass = (locator, { className }): any => {
   const [element] = QuerySelectorWithOptions.querySelector(locator._selector)
   if (!element) {
     return {
@@ -84,7 +78,7 @@ export const toHaveClass = (locator, { className }) => {
   }
 }
 
-export const toHaveId = (locator) => {
+export const toHaveId = (locator): any => {
   const [element] = QuerySelectorWithOptions.querySelector(locator._selector)
   if (!element) {
     return {
@@ -98,7 +92,7 @@ export const toHaveId = (locator) => {
   }
 }
 
-export const toHaveCss = (locator, { key }) => {
+export const toHaveCss = (locator, { key }): any => {
   const [element] = QuerySelectorWithOptions.querySelector(locator._selector)
   if (!element) {
     return {
