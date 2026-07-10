@@ -5,6 +5,7 @@ export default [
   {
     rules: {
       '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+      '@typescript-eslint/only-throw-error': 'off',
     },
   },
 ]
