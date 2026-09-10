@@ -1,4 +1,5 @@
 import type { ConditionResult } from '../ConditionResult/ConditionResult.ts'
+import * as GetConditionName from '../GetConditionName/GetConditionName.ts'
 import * as QuerySelectorWithOptions from '../QuerySelectorWithOptions/QuerySelectorWithOptions.ts'
 import * as SingleElementConditions from '../SingleElementConditions/SingleElementConditions.ts'
 import * as Time from '../Time/Time.ts'
@@ -6,11 +7,11 @@ import * as Timeout from '../Timeout/Timeout.ts'
 
 const maxTimeout = 2000
 
-export const checkSingleElementCondition = async (locator: any, fnName: string, options: any): Promise<ConditionResult> => {
+export const checkSingleElementCondition = async (locator: any, fnName: number | string, options: any): Promise<ConditionResult> => {
   const startTime = Time.getTimeStamp()
   const endTime = startTime + maxTimeout
   let currentTime = startTime
-  const fn = SingleElementConditions[fnName]
+  const fn = SingleElementConditions[GetConditionName.getConditionName(fnName)]
   while (currentTime < endTime) {
     const element = QuerySelectorWithOptions.querySelectorWithOptions(locator._selector, {
       hasText: locator._hasText,
