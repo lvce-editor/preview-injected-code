@@ -3,6 +3,10 @@
   "version": "0.0.0-dev",
   "description": "Preview code for lvce editor iframes",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvce-editor/preview-injected-code.git"
+  },
   "author": "Lvce Editor",
   "type": "module",
   "main": "src/previewInjectedCodeMain.ts",
